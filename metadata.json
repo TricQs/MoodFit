@@ -1,0 +1,1 @@
+{"name":"MoodFit","description":"Recommends wellness and fitness activities based on mood using Gemini AI with offline support, tracking, and reminders.","requestFramePermissions":[],"majorCapabilities":["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]}
