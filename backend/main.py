@@ -556,6 +556,9 @@ LANDING_PAGE_HTML = """<!DOCTYPE html>
 SWAGGER_UI_HTML = """<!DOCTYPE html>
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/swagger-ui-themes@3.0.1/themes/3.x/theme-muted.css">
 <title>{app.title} - Swagger UI</title>
@@ -582,10 +585,124 @@ SWAGGER_UI_HTML = """<!DOCTYPE html>
     font-family: 'Space Grotesk', sans-serif !important;
     font-size: 2.5rem !important;
     font-weight: 700 !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+  .swagger-ui .info .title small {
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
   }
   .swagger-ui .info p, .swagger-ui .info a, .swagger-ui .info li {
     color: #9ca3af !important;
     font-size: 14px !important;
+  }
+
+  /* Custom Navbar / Header */
+  .custom-header {
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 14px 24px;
+  }
+  .header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .brand-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-logo {
+    height: 32px;
+    width: 32px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #06b6d4, #6366f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+  }
+  .brand-logo svg {
+    width: 18px;
+    height: 18px;
+    stroke: #ffffff;
+    stroke-width: 2.5;
+  }
+  .brand-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+  }
+  .back-button {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+  .back-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+  }
+  .back-button svg {
+    width: 14px;
+    height: 14px;
+    stroke: #ffffff;
+    stroke-width: 2.5;
+  }
+
+  /* Swagger UI Version Badges override */
+  .swagger-ui .info .version {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #e5e7eb !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 9999px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 4px 12px !important;
+    margin: 0 8px 0 0 !important;
+    display: inline-block !important;
+    box-shadow: none !important;
+  }
+  
+  .swagger-ui .info .version-stamp {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    display: inline-block !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+
+  .swagger-ui .info .version-stamp .version {
+    background: rgba(16, 185, 129, 0.1) !important;
+    color: #10b981 !important;
+    border: 1px solid rgba(16, 185, 129, 0.2) !important;
+    border-radius: 9999px !important;
+    padding: 4px 12px !important;
   }
 
   /* Scheme Container */
@@ -954,6 +1071,24 @@ SWAGGER_UI_HTML = """<!DOCTYPE html>
 </style>
 </head>
 <body>
+<header class="custom-header">
+  <div class="header-container">
+    <div class="brand-group">
+      <div class="brand-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+      </div>
+      <span class="brand-name">MoodFit API</span>
+    </div>
+    <a href="/" class="back-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Kembali ke Beranda
+    </a>
+  </div>
+</header>
 <div id="swagger-ui"></div>
 <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
 <script>
